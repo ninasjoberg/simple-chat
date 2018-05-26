@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import firebase from './utils/firebase.js';
 import LoginGoogle from './components/LoginLogout/LoginGoogle.js';
 import LogoutGoogle from './components/LoginLogout/LogoutGoogle.js';
-import MessageForm from './components/MessageForm/MessageForm.js';
+import MessageList from './components/MessageList.js';
+import MessageForm from './components/MessageForm.js';
 import './App.css';
 
 
@@ -10,10 +11,21 @@ class App extends Component {
 
 	state = {
 		currentUser: '',
+		messagesList: [],
 	}
 
 	componentDidMount() {
 		firebase.auth().onAuthStateChanged(this.onUserReady);
+
+		//Listens for when new values/objects adds to the database Firebase. callback returns the added object
+		firebase.database()
+			.ref('messages').on('child_added', (snapshot) => {
+				const newMessage = {
+					value: snapshot.val(),
+					key: snapshot.key
+				}
+			this.setState({ messagesList: [...this.state.messagesList, newMessage] })
+		})
 	}
 
 	//function that sets the currentUser state (the one who is logged in)
@@ -31,8 +43,9 @@ class App extends Component {
 		}
 	}
 
+
 	render() {
-		const { currentUser } = this.state;
+		const { currentUser, messagesList } = this.state;
 
 		return (
 			<div className="App">
@@ -46,7 +59,8 @@ class App extends Component {
 					<div>
 						<h3>Welcome {currentUser.username}</h3>
 						<LogoutGoogle />
-						<MessageForm currentUser={currentUser.username}/>
+						<MessageList messagesList={messagesList} />
+						<MessageForm currentUser={currentUser}/>
 					</div>
 				}
 			</div>
