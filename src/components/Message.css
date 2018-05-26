@@ -1,0 +1,28 @@
+
+
+.message {
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: flex-start;
+}
+
+.message-avatar {
+    color: white;
+    height: 30px;
+    width: 30px;
+    background-color: violet;
+    border-radius: 50%;
+}
+
+.message-info {
+    display: flex;
+
+}
+
+.message-user {
+    margin-right: 10px;
+    font-weight: bold;
+}

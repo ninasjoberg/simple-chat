@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-info {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+.header-user {
+    font-weight: bold;
+}

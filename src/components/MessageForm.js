@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../utils/firebase.js';
+import './MessageForm.css';
 
 
 export default class MessageForm extends Component {
@@ -35,11 +36,9 @@ export default class MessageForm extends Component {
 
     render() {
         return(
-            <div className="message-form">
-                <form onSubmit={this.onSubmit}>
-                    <input className="message-form-input" type="text" name="message" onChange={this.onChange} value={this.state.message} placeholder="message"></input>
-                </form>
-            </div>
+            <form className="message-form" onSubmit={this.onSubmit}>
+                <input className="message-form-input" type="text" name="message" onChange={this.onChange} value={this.state.message} placeholder="message"></input>
+            </form>
         )
     }
 }

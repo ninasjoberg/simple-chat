@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import firebase from './utils/firebase.js';
+import Header from './components/Header.js'
 import LoginGoogle from './components/LoginLogout/LoginGoogle.js';
-import LogoutGoogle from './components/LoginLogout/LogoutGoogle.js';
 import MessageList from './components/MessageList.js';
 import MessageForm from './components/MessageForm.js';
+import './global.css';
 import './App.css';
 
 
@@ -48,17 +49,13 @@ class App extends Component {
 		const { currentUser, messagesList } = this.state;
 
 		return (
-			<div className="App">
-				<header className="App-header">
-					<h1 className="App-title">the simple-chatt app</h1>
-				</header>
+			<div className="app">
+				<Header username={currentUser.username}/>
 				{!currentUser &&
 					<LoginGoogle />
 				}
 				{currentUser &&
-					<div>
-						<h3>Welcome {currentUser.username}</h3>
-						<LogoutGoogle />
+					<div className="app-content">
 						<MessageList messagesList={messagesList} />
 						<MessageForm currentUser={currentUser}/>
 					</div>
