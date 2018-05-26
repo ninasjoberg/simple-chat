@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from './utils/firebase.js';
 import LoginGoogle from './components/LoginLogout/LoginGoogle.js';
 import LogoutGoogle from './components/LoginLogout/LogoutGoogle.js';
+import MessageForm from './components/MessageForm/MessageForm.js';
 import './App.css';
 
 
@@ -38,10 +39,15 @@ class App extends Component {
 				<header className="App-header">
 					<h1 className="App-title">the simple-chatt app</h1>
 				</header>
-				<LoginGoogle />
-				<h3>Welcome {currentUser.username}</h3>
+				{!currentUser &&
+					<LoginGoogle />
+				}
 				{currentUser &&
-					<LogoutGoogle />
+					<div>
+						<h3>Welcome {currentUser.username}</h3>
+						<LogoutGoogle />
+						<MessageForm currentUser={currentUser.username}/>
+					</div>
 				}
 			</div>
 		);
