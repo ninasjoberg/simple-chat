@@ -32,7 +32,7 @@ function signInGoogle () {
 export default function LoginGoogle(){
     return(
         <div>
-            <a  href='#' onClick={signInGoogle}>Sign in with google</a>
+            <button onClick={signInGoogle}>Sign in with google</button>
         </div>
     )
 }

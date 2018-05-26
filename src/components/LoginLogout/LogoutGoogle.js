@@ -12,7 +12,7 @@ function signOutGoogle(){
 export default function LoginGoogle(){
     return(
         <div>
-            <a  href='#' onClick={signOutGoogle}>Sign out</a>
+            <button onClick={signOutGoogle}>Sign out</button>
         </div>
     )
 }
