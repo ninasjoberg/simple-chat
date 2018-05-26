@@ -1,21 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import firebase from './utils/firebase.js';
+import LoginGoogle from './components/LoginLogout/LoginGoogle.js';
+import LogoutGoogle from './components/LoginLogout/LogoutGoogle.js';
 import './App.css';
 
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+
+	state = {
+		currentUser: '',
+	}
+
+	componentDidMount() {
+		firebase.auth().onAuthStateChanged(this.onUserReady);
+	}
+
+	//function that sets the currentUser state (the one who is logged in)
+	onUserReady = (user) => {
+		if (user && user.displayName) {
+			const newUser = {
+				email: user.email,
+				username: user.displayName,
+				userId: user.uid
+			}
+			this.setState({ currentUser: newUser });
+		}
+		else {
+			this.setState({ currentUser: '' });
+		}
+	}
+
+	render() {
+		const { currentUser } = this.state;
+
+		return (
+			<div className="App">
+				<header className="App-header">
+					<h1 className="App-title">the simple-chatt app</h1>
+				</header>
+				<LoginGoogle />
+				<h3>Welcome {currentUser.username}</h3>
+				{currentUser &&
+					<LogoutGoogle />
+				}
+			</div>
+		);
+	}
 }
 
 export default App;
