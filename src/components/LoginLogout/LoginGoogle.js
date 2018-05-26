@@ -15,16 +15,6 @@ function signInGoogle () {
         .then((result) => {
             return result.user;
         })
-        .then((user) => {
-            //store the user (email, uid and username) data in Firebase database
-            firebase.database()
-                .ref(`users/${user.uid}`)
-                .set({
-                    email: user.email,
-                    uid: user.uid,
-                    username: user.displayName
-                });
-        })
         .catch((error) => console.log(error) /* Handle Errors here.*/ );
 }
 
