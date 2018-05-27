@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import firebase from '../utils/firebase.js';
-import moment from 'moment';
 import './MessageForm.css';
 
 
@@ -24,7 +23,7 @@ export default class MessageForm extends Component {
         const { username, userId } = this.props.currentUser;
         const { message: text } = this.state;
 
-        const time = (moment(Date.now()).format('dddd h:mm a'));
+        const time = Date.now();
 
         const message = {
             text,

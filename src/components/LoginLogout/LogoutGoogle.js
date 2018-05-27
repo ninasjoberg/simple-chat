@@ -10,7 +10,7 @@ function signOutGoogle(){
     .catch(error => console.log(error) /* Handle Errors here.*/);
 }
 
-export default function LoginGoogle(){
+export default function LogoutGoogle(){
     return(
         <button className="logout-button" onClick={signOutGoogle}>Sign out</button>
     )

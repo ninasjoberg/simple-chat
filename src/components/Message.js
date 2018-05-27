@@ -1,15 +1,14 @@
 import React from 'react';
-import getColorFromName from '../utils/colorByName.js';
+import moment from 'moment';
+import getColorFromUserId from '../utils/colorByUser.js';
 import './Message.css';
 
 export default function Message(props) {
     const { text, userId, username, time } = props.value;
 
+    const formattedTime = moment(time).fromNow();
     const userLetter = username.charAt(0);
-
-    let userColor = getColorFromName(username);
-
-        console.log(userColor);
+    const userColor = getColorFromUserId(userId);
 
     return(
         <li className="message">
@@ -17,7 +16,7 @@ export default function Message(props) {
             <div className="message-content">
                 <div className="message-info">
                     <span className="message-user">{username}</span>
-                    <span className="message-time">{time}</span>
+                    <span className="message-time">{formattedTime}</span>
                 </div>
                 <p className="message-text">{text}</p>
             </div>

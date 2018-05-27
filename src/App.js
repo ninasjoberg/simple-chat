@@ -47,7 +47,6 @@ class App extends Component {
 
 	render() {
 		const { currentUser, messagesList } = this.state;
-		console.log(this.state.currentUser);
 
 		return (
 			<div className="app">
