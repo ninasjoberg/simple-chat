@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../utils/firebase.js';
+import moment from 'moment';
 import './MessageForm.css';
 
 
@@ -23,10 +24,13 @@ export default class MessageForm extends Component {
         const { username, userId } = this.props.currentUser;
         const { message: text } = this.state;
 
+        const time = (moment(Date.now()).format('dddd h:mm a'));
+
         const message = {
             text,
             username,
             userId,
+            time,
         }
         //store the message data in Firebase database
         firebase.database()
