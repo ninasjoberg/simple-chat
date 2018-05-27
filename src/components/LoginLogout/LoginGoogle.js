@@ -1,28 +1,28 @@
 import React from 'react';
 import firebase from '../../utils/firebase.js';
-
+import './LoginGoogle.css';
 
 let provider = new firebase.auth.GoogleAuthProvider();
 
 function signInGoogle () {
-    // configure Firebase to use google as the auth provider
-    firebase.auth().signInWithRedirect(provider);
-
+    provider.addScope('profile');
+    provider.addScope('email');
     // initiate login with google
     firebase.auth()
-        // open login google window
-        .getRedirectResult()
+        // open login google popup
+        .signInWithPopup(provider)
         .then((result) => {
-            return result.user;
+            const token = result.credential.accessToken;
+            const user = result.user;
+            console.log('logged in', user);
         })
         .catch((error) => console.log(error) /* Handle Errors here.*/ );
+
 }
 
 
 export default function LoginGoogle(){
     return(
-        <div>
-            <button onClick={signInGoogle}>Sign in with google</button>
-        </div>
+        <button className="login-button" onClick={signInGoogle}>Sign in with google</button>
     )
 }
