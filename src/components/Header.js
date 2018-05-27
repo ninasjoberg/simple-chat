@@ -13,7 +13,7 @@ export default function Header(props) {
                     <LogoutGoogle />
                 </div>
             }
-            <h1 className="header-title">the simple-chatt app</h1>
+            <h1 className="header-title">the simple-chat app</h1>
         </div>
     )
 }

@@ -1,5 +1,11 @@
 # simple-chat
 
+Link to webpage: https://
 
-## Getting startred:
+## Getting started:
 `npm i && npm start`
+
+
+## Technologies:
+- Create React App
+- Firebase - database and google login

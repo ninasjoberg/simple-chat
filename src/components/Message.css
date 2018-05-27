@@ -1,28 +1,40 @@
-
-
 .message {
     background-color: white;
     padding: 10px;
     display: flex;
-    flex-direction: column;
     flex-shrink: 0;
-    align-items: flex-start;
 }
 
 .message-avatar {
     color: white;
     height: 30px;
-    width: 30px;
-    background-color: violet;
+    min-width: 30px;
     border-radius: 50%;
+    padding: 7px;
+    margin-right: 15px;
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .message-info {
     display: flex;
-
 }
 
 .message-user {
     margin-right: 10px;
     font-weight: bold;
+}
+
+.message-time {
+    font-weight: 100;
+    color: grey;
+}
+
+.message-text {
+    line-height: 20px;
+    color: grey;
 }

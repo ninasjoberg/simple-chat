@@ -35,7 +35,7 @@ class App extends Component {
 			const newUser = {
 				email: user.email,
 				username: user.displayName,
-				userId: user.uid
+				userId: user.uid,
 			}
 			this.setState({ currentUser: newUser });
 		}
@@ -47,17 +47,18 @@ class App extends Component {
 
 	render() {
 		const { currentUser, messagesList } = this.state;
+		console.log(this.state.currentUser);
 
 		return (
 			<div className="app">
-				<Header username={currentUser.username}/>
+				<Header username={currentUser.username} />
 				{!currentUser &&
 					<LoginGoogle />
 				}
 				{currentUser &&
 					<div className="app-content">
 						<MessageList messagesList={messagesList} />
-						<MessageForm currentUser={currentUser}/>
+						<MessageForm currentUser={currentUser} />
 					</div>
 				}
 			</div>
