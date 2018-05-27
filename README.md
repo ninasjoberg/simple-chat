@@ -1,6 +1,6 @@
 # simple-chat
 
-Link to webpage: https://
+Link to app: https://ninasjoberg.github.io/simple-chat
 
 ## Getting started:
 `npm i && npm start`
