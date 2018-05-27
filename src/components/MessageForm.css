@@ -1,5 +1,7 @@
 .message-form-input {
     width: 100%;
-    height: 40px;
+    height: 75px;
     padding: 10px;
+    resize: none;
+    font-size: 16px;
 }

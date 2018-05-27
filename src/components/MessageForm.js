@@ -14,6 +14,9 @@ export default class MessageForm extends Component {
     }
 
     onSubmit = (event) => {
+        //check if enter key is pressed
+        if(event.keyCode === 13) {
+
         //prevent the page to reload when the form is submitted
         event.preventDefault();
 
@@ -32,12 +35,13 @@ export default class MessageForm extends Component {
             //sets state to empty strings which clear the inputfield
             .then(this.setState({ message: '' }))
             .catch((error) => console.log(error) /* Handle Errors here.*/ );
+        }
     }
 
     render() {
         return(
-            <form className="message-form" onSubmit={this.onSubmit}>
-                <input className="message-form-input" type="text" name="message" onChange={this.onChange} value={this.state.message} placeholder="message"></input>
+            <form className="message-form" onKeyDown={this.onSubmit}>
+                <textarea className="message-form-input" type="text" name="message" onChange={this.onChange} value={this.state.message} placeholder="message" ></textarea>
             </form>
         )
     }

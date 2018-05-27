@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from '../../utils/firebase.js';
+import './LogoutGoogle.css';
 
 
 function signOutGoogle(){
@@ -11,8 +12,6 @@ function signOutGoogle(){
 
 export default function LoginGoogle(){
     return(
-        <div>
-            <button onClick={signOutGoogle}>Sign out</button>
-        </div>
+        <button className="logout-button" onClick={signOutGoogle}>Sign out</button>
     )
 }
