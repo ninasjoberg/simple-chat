@@ -1,6 +1,6 @@
 
 .message-list {
-    height: 500px;
+    height: 55vh;
     background-color: white;
     overflow: auto;
     display: flex;
